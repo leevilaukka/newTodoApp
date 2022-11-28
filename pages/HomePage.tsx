@@ -19,6 +19,7 @@ export default function HomePage({navigation}: any) {
             <Text>Home Page</Text>
             <Button title="Sign In" onPress={() => navigation.navigate('Sign In')} />
             <Button title="Sign Up" onPress={() => navigation.navigate('Sign Up')} />
+            <Button title="Database Example" onPress={() => navigation.navigate('Database Example')} />
             {
                 user && <Text>{user.email}</Text>
             }
