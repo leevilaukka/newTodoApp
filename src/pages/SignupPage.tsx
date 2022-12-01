@@ -41,7 +41,6 @@ export default function SignupPage({ navigation }: any) {
       {/* login form */}
 
 
-
       <TextInput
         label="Email"
         value={email}
