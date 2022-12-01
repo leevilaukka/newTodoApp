@@ -7,6 +7,7 @@ import SignupPage from './src/pages/SignupPage';
 import SigninPage from './src/pages/SigninPage';
 import HomePage from './src/pages/HomePage';
 import { DatabaseExample } from './src/pages/DatabaseExample';
+import CreateTodo from './src/pages/CreateTodo';
 
 const Stack = createNativeStackNavigator();
 
@@ -35,6 +36,12 @@ export default function App() {
           name="Database Example"
           component={DatabaseExample}
           options={{ headerShown: true }} />
+
+        <Stack.Screen 
+          name="Create Todo"
+          component={CreateTodo}
+          options={{ headerShown: true }} />
+        
 
       </Stack.Navigator>
     </NavigationContainer>

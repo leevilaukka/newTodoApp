@@ -51,6 +51,16 @@ export default function HomePage({ navigation }: any) {
             </Button>
 
             <Button
+                title="Create Todo"
+                onPress={() => navigation.navigate('Create Todo')}
+                mode={undefined}
+                style={undefined}>
+                Create Todo
+            </Button>
+
+            
+            
+            <Button
                 title="Sign out"
                 onPress={() => navigation.navigate("Login")}
                 mode={undefined}
