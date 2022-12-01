@@ -19,7 +19,7 @@ const firebaseConfig: FirebaseOptions = {
     projectId: "todomanagerreactnative",
     storageBucket: "todomanagerreactnative.appspot.com",
     messagingSenderId: "34695591190",
-    appId: "1:34695591190:web:5a58be9d66784e972bcc37",    
+    appId: "1:34695591190:web:5a58be9d66784e972bcc37",
 };
 
 const app = initializeApp(firebaseConfig);

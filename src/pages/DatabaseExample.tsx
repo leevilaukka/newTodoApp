@@ -1,4 +1,4 @@
-import api, { TodoDocument } from '../api';
+import api, { TodoDocument } from '../../api';
 
 import { collection, doc, DocumentData, getDoc, getDocs } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
@@ -13,7 +13,7 @@ export const DatabaseExample = () => {
 
     const [data, setData] = useState<TodoDocument[]>([]);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<{message: string}>();
+    const [error, setError] = useState<{ message: string }>();
 
     useEffect(() => {
         const snapshot = getDocs(collection(api.firestore, 'todos'));
@@ -23,7 +23,7 @@ export const DatabaseExample = () => {
                 if (!doc.empty) {
                     const data = doc.docs.map((doc) => doc.data());
                     console.log(data);
-                    
+
                     setData(data as TodoDocument[]);
                 } else {
                     // doc.data() will be undefined in this case
@@ -34,18 +34,18 @@ export const DatabaseExample = () => {
                 setError(error);
             })
     }, []);
-    
+
     return (
         <View >
-        {loading && <Text>Loading...</Text>}
-        {error && <Text>Something went wrong: {error.message}</Text>}
-        {data && 
-            <FlatList
-                data={data}
-                renderItem={({item}) => <Text>{item.title}</Text>}
-                keyExtractor={(item) => item.title}
-            />
-        }
-            </View>
+            {loading && <Text>Loading...</Text>}
+            {error && <Text>Something went wrong: {error.message}</Text>}
+            {data &&
+                <FlatList
+                    data={data}
+                    renderItem={({ item }) => <Text>{item.title}</Text>}
+                    keyExtractor={(item) => item.title}
+                />
+            }
+        </View>
     );
-    };
+};
