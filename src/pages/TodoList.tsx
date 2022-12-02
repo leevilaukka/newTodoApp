@@ -1,27 +1,35 @@
 import api, { TodoDocument } from '../../api';
 
-import { collection, doc, DocumentData, getDoc, getDocs } from 'firebase/firestore';
+import { collection, getDocs, query, where } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { FlatList } from 'react-native';
 
 import { View, Text } from 'react-native';
 import React from 'react';
+import TodoItem from '../components/TodoItem';
 
 
 
-export const DatabaseExample = () => {
+export const TodoList = () => {
 
     const [data, setData] = useState<TodoDocument[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<{ message: string }>();
 
+    const q = query(collection(api.firestore, "todos"), where("owner", "==", api.auth.currentUser?.email));
+
     useEffect(() => {
-        const snapshot = getDocs(collection(api.firestore, 'todos'));
+        const snapshot = getDocs(q);
         snapshot
             .then((doc) => {
                 setLoading(false);
                 if (!doc.empty) {
-                    const data = doc.docs.map((doc) => doc.data());
+                    const data = doc.docs.map((doc) => {
+                        return {
+                            id: doc.id,
+                            ...doc.data(),
+                        } as TodoDocument;
+                    });
                     console.log(data);
 
                     setData(data as TodoDocument[]);
@@ -42,8 +50,8 @@ export const DatabaseExample = () => {
             {data &&
                 <FlatList
                     data={data}
-                    renderItem={({ item }) => <Text>{item.title}</Text>}
-                    keyExtractor={(item) => item.title}
+                    renderItem={({item}) => <TodoItem {...item} />}
+                    keyExtractor={(item) => item.id}
                 />
             }
         </View>

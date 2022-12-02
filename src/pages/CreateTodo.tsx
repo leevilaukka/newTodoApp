@@ -1,5 +1,6 @@
 import React from 'react';
-import {View, Text, Button, TextInput} from 'react-native';
+import {View, Text, Button } from 'react-native';
+import TextInput from '../components/TextInput';
 
 import api from "../../api"
 
@@ -36,10 +37,11 @@ export default function CreateTodo({navigation}: any) {
       {api.auth.currentUser?.email ? (
         <View>
             <Text>Title</Text>
-            <TextInput value={title} onChangeText={setTitle} />
+            <TextInput value={title} onChangeText={setTitle} errorText={"Error"} description={"Todo Title"}/>
+            
             <Text>Description</Text>
-            <TextInput value={description} onChangeText={setDescription} />
-            <Text>Due Date</Text>
+            <TextInput value={description} onChangeText={setDescription}  errorText={"Error"} description={"Todo Description"}/>
+            
             {errors.map((error, index) => {
               return <Text key={index}>{error}</Text>;
             })}
@@ -48,9 +50,7 @@ export default function CreateTodo({navigation}: any) {
         </View>
       ) : (
         <Text>You must be logged in to create a todo</Text>
-      )
-      
-      }
+      )}
     </View>
   );
 }
