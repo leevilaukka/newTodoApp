@@ -1,12 +1,12 @@
 import React from 'react';
 import api, { TodoDocument } from '../../api';
-
+import Background from '../components/Background';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { FlatList } from 'react-native';
 
-import { View, Text } from 'react-native';
-import React from 'react';
+import { Text } from 'react-native';
+
 import TodoItem from '../components/TodoItem';
 
 
@@ -45,7 +45,7 @@ export const TodoList = () => {
     }, []);
 
     return (
-        <View >
+        <Background>
             {loading && <Text>Loading...</Text>}
             {error && <Text>Something went wrong: {error.message}</Text>}
             {data &&
@@ -55,6 +55,6 @@ export const TodoList = () => {
                     keyExtractor={(item) => item.id}
                 />
             }
-        </View>
+        </Background>
     );
 };
