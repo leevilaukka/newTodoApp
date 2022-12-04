@@ -43,11 +43,11 @@ export default function HomePage({ navigation }: any) {
 
 
             <Button
-                title="Database Example"
-                onPress={() => navigation.navigate('Database Example')}
+                title="Todo List"
+                onPress={() => navigation.navigate('Todo List')}
                 mode={undefined}
                 style={undefined}>
-                Database Example
+                Todo List
             </Button>
 
             <Button

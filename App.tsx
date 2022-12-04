@@ -6,8 +6,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SignupPage from './src/pages/SignupPage';
 import SigninPage from './src/pages/SigninPage';
 import HomePage from './src/pages/HomePage';
-import { DatabaseExample } from './src/pages/DatabaseExample';
 import CreateTodo from './src/pages/CreateTodo';
+import { TodoList } from './src/pages/TodoList';
 
 const Stack = createNativeStackNavigator();
 
@@ -33,8 +33,8 @@ export default function App() {
           options={{ headerShown: true }} />
 
         <Stack.Screen
-          name="Database Example"
-          component={DatabaseExample}
+          name="Todo List"
+          component={TodoList}
           options={{ headerShown: true }} />
 
         <Stack.Screen 

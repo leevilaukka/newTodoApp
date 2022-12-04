@@ -1,12 +1,6 @@
 import React from 'react';
-
-import { View } from 'react-native';
-import { Text } from 'react-native-paper'
-import Background from '../components/Background'
-import Header from '../components/Header'
-import Button from '../components/Button'
-import TextInput from '../components/TextInput'
-
+import { View, Text, Button } from 'react-native';
+import TextInput from '../components/TextInput';
 
 import api from "../../api"
 import { collection, addDoc, Timestamp } from 'firebase/firestore';
@@ -40,24 +34,12 @@ export default function CreateTodo({ navigation }: any) {
   return (
     <>
       {api.auth.currentUser?.email ? (
-        <Background>
-          <Header>Todo plan</Header>
-          <TextInput
-            label="Title"
-            value={title}
-            onChangeText={setTitle}
-            errorText={undefined}
-            description={undefined} />
+        <View>
+          <Text>Title</Text>
+          <TextInput value={title} onChangeText={setTitle} errorText={"Error"} description={"Todo Title"} />
 
-
-          <TextInput
-            label="Description"
-            value={description}
-            onChangeText={setDescription}
-            errorText={undefined}
-            description={undefined} />
-
-
+          <Text>Description</Text>
+          <TextInput value={description} onChangeText={setDescription} errorText={"Error"} description={"Todo Description"} />
 
           {errors.map((error, index) => {
             return <Text key={index}>{error}</Text>;
@@ -73,9 +55,7 @@ export default function CreateTodo({ navigation }: any) {
         </Background>
       ) : (
         <Text>You must be logged in to create a todo</Text>
-      )
-
-      }
-    </>
+      )}
+    </View>
   );
 }
