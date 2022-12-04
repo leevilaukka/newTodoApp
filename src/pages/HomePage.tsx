@@ -1,14 +1,9 @@
 import { User } from "firebase/auth";
 import React from "react";
-import { View } from "react-native";
 import { Text } from 'react-native-paper'
 import Background from '../components/Background'
 import Header from '../components/Header'
 import Button from '../components/Button'
-import TextInput from '../components/TextInput'
-import { theme } from '../core/theme'
-
-
 import api from "../../api";
 import { signOut } from "firebase/auth";
 
@@ -25,12 +20,10 @@ export default function HomePage({ navigation }: any) {
 
     const SignOut = () => {
         signOut(api.auth).then(() => {
-
+            // sign out
         }).catch((error) => {
             // An error happened.
         });
-
-
     }
 
     return (
@@ -40,7 +33,6 @@ export default function HomePage({ navigation }: any) {
                     user && <Text>{user.email}</Text>
                 }
             </Header>
-
 
             <Button
                 title="Todo List"
@@ -58,8 +50,6 @@ export default function HomePage({ navigation }: any) {
                 Create Todo
             </Button>
 
-            
-            
             <Button
                 title="Sign out"
                 onPress={() => navigation.navigate("Login")}

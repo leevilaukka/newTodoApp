@@ -19,7 +19,6 @@ export default function CreateTodo({ navigation }: any) {
       return;
     }
     // create todo and save to firebase
-
     addDoc(collection(api.firestore, "todos"), {
       title,
       description,
@@ -42,15 +41,15 @@ export default function CreateTodo({ navigation }: any) {
             label="Title"
             value={title}
             onChangeText={setTitle}
-            errorText={"Error"}
-            description={"Todo Title"} />
+            errorText={""}
+            description={""} />
 
           <TextInput
             label="Description"
             value={description}
             onChangeText={setDescription}
-            errorText={"Error"}
-            description={"Todo Description"} />
+            errorText={""}
+            description={""} />
 
           {errors.map((error, index) => {
             return <Text key={index}>{error}</Text>;

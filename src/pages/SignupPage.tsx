@@ -1,15 +1,10 @@
 import api from '../../api';
 import React from 'react';
-import { View } from 'react-native';
 import { Text } from 'react-native-paper'
 import Background from '../components/Background'
 import Header from '../components/Header'
 import Button from '../components/Button'
 import TextInput from '../components/TextInput'
-import { theme } from '../core/theme'
-
-
-
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 
 export default function SignupPage({ navigation }: any) {

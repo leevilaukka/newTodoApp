@@ -4,20 +4,15 @@ import Background from '../components/Background';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { FlatList } from 'react-native';
-
 import { Text } from 'react-native';
-
 import TodoItem from '../components/TodoItem';
 
-
-
 export const TodoList = () => {
-
     const [data, setData] = useState<TodoDocument[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<{ message: string }>();
-
-    const q = query(collection(api.firestore, "todos"), where("owner", "==", api.auth.currentUser?.email));
+    const q = query(collection(api.firestore, "todos"),
+        where("owner", "==", api.auth.currentUser?.email));
 
     useEffect(() => {
         const snapshot = getDocs(q);
