@@ -1,3 +1,4 @@
+import React from 'react';
 import api, { TodoDocument } from '../../api';
 
 import { collection, doc, DocumentData, getDoc, getDocs } from 'firebase/firestore';
@@ -5,7 +6,6 @@ import { useEffect, useState } from 'react';
 import { FlatList } from 'react-native';
 
 import { View, Text } from 'react-native';
-import React from 'react';
 
 
 

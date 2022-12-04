@@ -39,8 +39,6 @@ export default function SignupPage({ navigation }: any) {
     <Background>
       <Header>Signup Page</Header>
       {/* login form */}
-
-
       <TextInput
         label="Email"
         value={email}
